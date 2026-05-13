@@ -1,5 +1,12 @@
 {
   "name": "isoon-skills",
-  "version": "0.0.1",
-  "description": "placeholder"
+  "version": "0.1.0",
+  "description": "Personal Claude Code skills by isoon: save-skill (meta-skill for capturing techniques), fe-next (Senestia Next.js agent), repo-wiki (living repo knowledge base), review + logic-first-review + self-review-before-complete (PR/self-review chain), analyzing-phone-data-quality.",
+  "author": {
+    "name": "isoon",
+    "email": "isoon@senestia.com"
+  },
+  "homepage": "https://github.com/isoon/isoon-skills",
+  "license": "MIT",
+  "keywords": ["claude-code", "skills", "senestia", "nextjs", "code-review", "repo-wiki"]
 }
