@@ -19,7 +19,7 @@ See `skills/_meta/INDEX.md` for the canonical registry and `skills/_meta/BEST_PR
 ## Install — as a Claude Code plugin (recommended for users)
 
 ```
-/plugin install https://github.com/isoon/isoon-skills
+/plugin install https://github.com/isoonsenestia/isoon-skills
 ```
 
 Claude Code clones the repo into its plugin cache and auto-loads everything in `skills/`. Skill names will appear namespaced as `isoon-skills:save-skill`, etc.
@@ -27,7 +27,7 @@ Claude Code clones the repo into its plugin cache and auto-loads everything in `
 ## Install — as a symlinked dev checkout (for the author / contributors)
 
 ```bash
-git clone https://github.com/isoon/isoon-skills ~/claude-things/isoon-skills
+git clone https://github.com/isoonsenestia/isoon-skills ~/claude-things/isoon-skills
 cd ~/claude-things/isoon-skills
 ./scripts/install.sh
 ```

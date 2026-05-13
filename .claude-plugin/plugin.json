@@ -6,7 +6,7 @@
     "name": "isoon",
     "email": "isoon@senestia.com"
   },
-  "homepage": "https://github.com/isoon/isoon-skills",
+  "homepage": "https://github.com/isoonsenestia/isoon-skills",
   "license": "MIT",
   "keywords": ["claude-code", "skills", "senestia", "nextjs", "code-review", "repo-wiki"]
 }
