@@ -7,10 +7,12 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 - **analyzing-phone-data-quality** — Audit raw phone-number CSVs: detect separators, validate against a national standard, output a cleansing plan.
 - **fe-next** — Frontend agent for Senestia Next.js apps; triggers on component/page/hook/style work.
 - **logic-first-review** — Sub-skill enforcing the *Current logic → Why it breaks → What should happen → Suggested change* review format.
+- **pr-agent-loop** — Trigger, wait for, fetch, and validate the Codium PR-agent (github-actions[bot]) auto-review on a PR.
 - **repo-wiki** — Generate and maintain a graph-linked living wiki for a repo across the microservice ecosystem.
 - **review** — PR code review using `gh` to fetch the diff and producing a logic-first structured review.
 - **save-skill** — Capture a new technique as a properly-formatted SKILL.md and register it here.
 - **self-review-before-complete** — Apply logic-first review to your own diff before claiming a task is done.
+- **senestia-bug-intake** — Triage a customer-reported bug in Senestia's Atlassian: file the engineering counterpart on the PECS board with sprint/label/link, post a Thai short summary back on the source.
 
 ## Meta
 
