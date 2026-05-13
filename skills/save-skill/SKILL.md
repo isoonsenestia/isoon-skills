@@ -30,9 +30,10 @@ Capture a technique that just proved itself in this session into a properly-stru
 2. **Read `~/.claude/skills/_meta/BEST_PRACTICES.md`** before drafting. It has the authoritative frontmatter and structure rules.
 3. **Draft from `~/.claude/skills/_meta/TEMPLATE.md`.** Don't invent a new structure.
 4. **Validate against the checklist** in `_meta/BEST_PRACTICES.md` §11 before writing.
-5. **Write `~/.claude/skills/<name>/SKILL.md`.**
-6. **Append a one-line entry to `~/.claude/skills/_meta/INDEX.md`** in the `## Skills` section, alphabetical.
-7. **Tell the user**: where it was saved, that the description is trigger-only by design, and that the skill can be refined later (with what to look for — see "Improving later" below).
+5. **Write `~/claude-things/isoon-skills/skills/<name>/SKILL.md`** — the repo, NOT `~/.claude/skills/`. The repo is the source of truth; `~/.claude/skills/<name>` will be created as a symlink in the next step.
+6. **Run `~/claude-things/isoon-skills/scripts/install.sh`** to create the `~/.claude/skills/<name>` symlink. Expect `linked=1` in the output.
+7. **Append a one-line entry to `~/.claude/skills/_meta/INDEX.md`** in the `## Skills` section, alphabetical. (This path resolves through the `_meta` symlink to the repo.)
+8. **Tell the user**: where the SKILL.md lives in the repo, that the symlink is in place so the skill is live, and that they should `git add / commit / push` from `~/claude-things/isoon-skills/` when ready. Also mention the skill can be refined later — see "Improving later" below.
 
 ## Quick Reference
 
@@ -40,7 +41,8 @@ Capture a technique that just proved itself in this session into a properly-stru
 |------|------|---------------|
 | Draft | Read `_meta/TEMPLATE.md` | Frontmatter `name` + `description` only |
 | Description | n/a | Starts with "Use when..."; no workflow summary |
-| Write | Write tool | Path is `~/.claude/skills/<name>/SKILL.md` |
+| Write | Write tool | Path is `~/claude-things/isoon-skills/skills/<name>/SKILL.md` |
+| Symlink | Bash `scripts/install.sh` | Output includes `linked=1` |
 | Register | Edit `_meta/INDEX.md` | One line, alphabetical |
 
 ## Common Mistakes
@@ -53,6 +55,8 @@ Capture a technique that just proved itself in this session into a properly-stru
 | Body restates what Claude already knows | Delete; assume Claude is smart |
 | Forgot to update `_meta/INDEX.md` | Add the entry — the index is how the user audits the skill set |
 | Used `@path/to/file` to reference another skill | Use plain reference: `**RELATED:** other-skill-name` |
+| Wrote SKILL.md directly to `~/.claude/skills/<name>/` | Skill won't be in the repo — drift. Write to `~/claude-things/isoon-skills/skills/<name>/` and run `install.sh` |
+| Wrote to repo but forgot `install.sh` | No symlink → Claude Code won't see it. Run `~/claude-things/isoon-skills/scripts/install.sh` |
 
 ## Improving later
 
