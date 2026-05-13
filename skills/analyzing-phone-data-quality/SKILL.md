@@ -79,29 +79,38 @@ df.select(["cell_idx", "cell_separator"]).unique("cell_idx") \
 |------|----------|
 | `summary.json` | Totals: valid/invalid counts, separator distribution, format patterns |
 | `detail.csv` | One row per extracted number with all classification fields |
-| `executive-report.md` | Executive summary paragraph, metrics, issue breakdown, cleansing plan, decisions required |
+| `executive-report.md` | Headline (strict valid/invalid/empty), At-a-Glance table, §1 Invalid Analysis (5 defect-type groups, descriptive), §2 Recommended Actions (yield-layering + action plan), §3 Decisions Required, AI Insights |
 
-### Executive Summary Paragraph
+### Executive Summary Headline
 
-The `executive-report.md` opens with a single prose paragraph (before any tables) that summarizes the entire report:
+The `executive-report.md` opens with a single bold sentence in three-way form,
+followed by three bullets that orient the reader:
 
 ```
-This dataset contains **N phone numbers** extracted from N records in `file.csv`.
-**X% (N) are immediately valid** 10-digit Thai mobile numbers requiring no changes.
-An additional N numbers are auto-recoverable through format normalization,
-bringing the expected usable yield to **Y% (N numbers)**.
-Key issues: [comma-separated list]. See Section 4 for decisions required before cleansing begins.
+**X% of N cells in <file> are valid as stored;
+Y% are invalid and Z% are empty.**
+
+- Dataset: N cells from <file>
+- Top invalid groups (cells): Format f · Structural s · Wrong-type w · ...
+- Decisions required: see §3
 ```
 
-Key issues sentence lists: multi-number cells, 9-digit landlines, wrong-length numbers, non-numeric/unparseable entries — only non-zero categories.
+Recovery framing (auto-cleanup, splitting, yields) belongs in §2 Recommended
+Actions — never in the headline or §1.
 
-## 5-Step Cleansing Plan
+## Strict Validity Rule
 
-1. Split multi-number cells on detected separators
-2. Strip non-digit characters
-3. Handle international prefixes (+66 / 66)
-4. Validate digit count (9 or 10 only)
-5. Normalize: `NNN-NNN-NNNN` (10-digit) or `NN-NNN-NNNN` (9-digit)
+A cell is *valid* iff it stores exactly one `0XXXXXXXXX` 10-digit mobile number
+— no formatting, no prefix, no whitespace. Anything else is invalid.
+
+## Recovery Actions
+
+These run **after** validity classification — they do not affect §1 of the report.
+
+1. Auto-clean Format defects: strip non-digit chars; normalize `+66` / `66` prefix
+2. Split Structural defects: split on detected separator; primary number → `phone`, rest → `PspInf.PspPcsTel`
+3. Route landline / wrong-length / non-numeric / unparseable → `PspInf.PspPcsTel` as free text
+4. Empty source cells → both fields NULL
 
 ## Common Mistakes
 
@@ -111,6 +120,7 @@ Key issues sentence lists: multi-number cells, 9-digit landlines, wrong-length n
 | Counting separators after explode | `unique("cell_idx")` first |
 | `== ""` for null check | Use `.is_null()` — Polars nulls are `None` |
 | `unknown_multi` cells left valid | Override after classify: always → `is_valid=False, invalid_reason="unparseable"` |
+| Folding `needs_cleanup` into the valid headline | `needs_cleanup` is invalid until Step 1 of the recovery plan runs. Keep validity strict in §1; quantify recovery only in §2. |
 
 ## Key Decisions for Stakeholders
 
