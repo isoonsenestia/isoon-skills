@@ -1,0 +1,28 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    { "query": "path:pages/api", "color": { "a": 1, "rgb": 3447003 } },
+    { "query": "path:pages/architecture", "color": { "a": 1, "rgb": 9109504 } },
+    { "query": "path:pages/business", "color": { "a": 1, "rgb": 1680904 } },
+    { "query": "path:pages/data", "color": { "a": 1, "rgb": 16750848 } },
+    { "query": "path:pages/database", "color": { "a": 1, "rgb": 8388608 } },
+    { "query": "path:pages/integration", "color": { "a": 1, "rgb": 16711935 } },
+    { "query": "path:pages/cross-cutting", "color": { "a": 1, "rgb": 8421504 } }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.5,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250
+}

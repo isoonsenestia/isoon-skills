@@ -1,0 +1,120 @@
+{
+  "$schema": "repo-wiki-manifest-v1",
+  "repo": "payment-service",
+  "version": "2026-04-14",
+  "tech_stack": ["typescript", "nestjs", "postgresql", "redis"],
+  "dimensions": ["api", "architecture", "business", "data", "database", "integration"],
+
+  "exposes": {
+    "api": [
+      {
+        "id": "POST /api/v1/auth/login",
+        "page": "pages/api/auth-endpoints",
+        "description": "Authenticate user, return JWT + refresh token"
+      },
+      {
+        "id": "POST /api/v1/auth/refresh",
+        "page": "pages/api/auth-endpoints",
+        "description": "Exchange refresh token for new access token"
+      },
+      {
+        "id": "POST /api/v1/payments",
+        "page": "pages/api/payment-endpoints",
+        "description": "Create a new payment intent"
+      },
+      {
+        "id": "GET /api/v1/payments/:id",
+        "page": "pages/api/payment-endpoints",
+        "description": "Get payment details by ID"
+      },
+      {
+        "id": "POST /api/v1/payments/:id/refund",
+        "page": "pages/api/payment-endpoints",
+        "description": "Initiate refund for a payment"
+      }
+    ],
+    "events": [
+      {
+        "id": "payment.created",
+        "page": "pages/business/payment-lifecycle",
+        "description": "Emitted when a new payment intent is created"
+      },
+      {
+        "id": "payment.completed",
+        "page": "pages/business/payment-lifecycle",
+        "description": "Emitted when payment succeeds via Stripe webhook"
+      },
+      {
+        "id": "payment.failed",
+        "page": "pages/business/payment-lifecycle",
+        "description": "Emitted when payment fails or is declined"
+      },
+      {
+        "id": "payment.refunded",
+        "page": "pages/business/payment-lifecycle",
+        "description": "Emitted when refund is processed"
+      }
+    ],
+    "entities": [
+      {
+        "id": "Payment",
+        "page": "pages/data/payment-entity",
+        "description": "Core payment domain model with status state machine"
+      },
+      {
+        "id": "PaymentMethod",
+        "page": "pages/data/payment-method-entity",
+        "description": "Stored payment method (card, bank transfer)"
+      }
+    ]
+  },
+
+  "consumes": {
+    "api": [
+      {
+        "id": "GET /api/v1/users/:id",
+        "from_repo": "user-service",
+        "page": "pages/integration/user-service-client"
+      },
+      {
+        "id": "GET /api/v1/users/:id/payment-methods",
+        "from_repo": "user-service",
+        "page": "pages/integration/user-service-client"
+      }
+    ],
+    "events": [
+      {
+        "id": "user.verified",
+        "from_repo": "user-service",
+        "page": "pages/business/payment-eligibility"
+      }
+    ]
+  },
+
+  "cross_repo_links": [
+    {
+      "local_page": "pages/integration/user-service-client",
+      "remote_repo": "user-service",
+      "remote_page": "pages/api/user-endpoints",
+      "relation": "calls"
+    },
+    {
+      "local_page": "pages/integration/stripe-client",
+      "remote_repo": "_external:stripe",
+      "remote_page": null,
+      "relation": "calls"
+    },
+    {
+      "local_page": "pages/business/payment-lifecycle",
+      "remote_repo": "notification-service",
+      "remote_page": "pages/business/payment-notifications",
+      "relation": "publishes-to"
+    },
+    {
+      "local_page": "pages/business/payment-lifecycle",
+      "remote_repo": "order-service",
+      "remote_page": "pages/business/order-fulfillment",
+      "relation": "publishes-to"
+    }
+  ]
+}
