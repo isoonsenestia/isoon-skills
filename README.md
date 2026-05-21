@@ -34,13 +34,44 @@ cd ~/claude-things/isoon-skills
 
 This symlinks each skill from `skills/<name>` into `~/.claude/skills/<name>`. Edits to a SKILL.md in the repo are visible to Claude Code immediately — no commit/push/update cycle needed.
 
+### Three skill homes
+
+A skill is "installed" when its `SKILL.md` lives in a directory that one of the Claude surfaces scans on launch. There are three on macOS:
+
+| # | Surface | Path | Synced by |
+|---|---|---|---|
+| 1 | **Repo** (canonical source) | `~/claude-things/isoon-skills/skills/<name>/` | git |
+| 2 | **Claude Code (CLI)** | `~/.claude/skills/<name>/` | `scripts/install.sh` |
+| 3 | **Claude Cowork** (Desktop local-agent-mode) | `~/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/<sessionId>/<accountId>/skills/<name>/` | `scripts/sync-cowork.sh` |
+
+Sync everything in one command:
+
+```bash
+./scripts/install.sh --all     # CLI + Cowork
+```
+
+Or run them separately:
+
+```bash
+./scripts/install.sh           # CLI only
+./scripts/sync-cowork.sh       # Cowork only
+```
+
+**Caveats for the Cowork sync:**
+
+1. The Cowork `skills/` directory is a **server-synced runtime cache**. A future Claude Desktop update may wipe or restructure it — if `sync-cowork.sh` stops working after a desktop update, expect the path or format to have changed.
+2. Cowork skills normally have a server-issued `skillId` recorded in `manifest.json`. We don't touch that manifest — we bet on the desktop app picking up directory-scanned `SKILL.md` files at session start. If a synced skill doesn't appear in Cowork's `/` menu after restarting the desktop, the bet failed; fall back to uploading via the Desktop UI.
+3. Cowork rotates session UUIDs. The script always targets the **newest** session by mtime. Re-run after a long gap.
+4. Names that already exist in Cowork (built-ins like `pdf`, `pptx`, plus any skill you uploaded via the UI) are **skipped, never overwritten**. To override a built-in name, first rename your repo skill.
+
 ## Scripts
 
-- `scripts/install.sh` — idempotent. Creates one symlink per skill in `~/.claude/skills/`. Backs up any pre-existing non-symlink content to `<name>.bak.<timestamp>` before linking.
-- `scripts/uninstall.sh` — removes only symlinks pointing into this repo. Leaves backups and foreign symlinks alone.
-- `scripts/doctor.sh` — reports broken symlinks and any directory under `~/.claude/skills/` that isn't a symlink (potential unsaved work).
+- `scripts/install.sh` — idempotent. Creates one symlink per skill in `~/.claude/skills/`. Backs up any pre-existing non-symlink content to `<name>.bak.<timestamp>` before linking. Pass `--all` (or `--cowork`, or `COWORK=1`) to also run `sync-cowork.sh`.
+- `scripts/sync-cowork.sh` — mac-only. Detects the newest Claude Desktop Cowork session and symlinks each repo skill into its `skills/` folder. No-ops gracefully when Cowork isn't installed.
+- `scripts/uninstall.sh` — removes only symlinks pointing into this repo, from both the CLI destination and the newest Cowork session. Leaves backups and foreign symlinks alone.
+- `scripts/doctor.sh` — reports broken symlinks and any directory under `~/.claude/skills/` that isn't a symlink (potential unsaved work). Also scans the newest Cowork session for broken repo-pointing symlinks.
 
-All three accept `SKILLS_SRC` and `SKILLS_DEST` env vars for testing.
+`install.sh`, `sync-cowork.sh`, `uninstall.sh`, and `doctor.sh` all accept `SKILLS_SRC` and `SKILLS_DEST` env vars for testing.
 
 ## Authoring a new skill
 

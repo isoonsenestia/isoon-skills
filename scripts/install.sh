@@ -33,3 +33,8 @@ for src in "$SKILLS_SRC"/*/; do
 done
 
 echo "install.sh done. linked=$linked refreshed=$refreshed backed_up=$backed_up"
+
+# Optional: also sync to Claude Desktop's Cowork session.
+if [ "${1:-}" = "--all" ] || [ "${1:-}" = "--cowork" ] || [ "${COWORK:-0}" = "1" ]; then
+  exec "$REPO_ROOT/scripts/sync-cowork.sh"
+fi

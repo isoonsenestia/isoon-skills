@@ -5,7 +5,9 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 ## Skills
 
 - **analyzing-phone-data-quality** — Audit raw phone-number CSVs: detect separators, validate against a national standard, output a cleansing plan.
+- **building-concept-explainer-html** — Build a single-file interactive HTML page that teaches a concept; eight beats, seven UI primitives, single-file vanilla-JS baseline.
 - **fe-next** — Frontend agent for Senestia Next.js apps; triggers on component/page/hook/style work.
+- **grill-me** — Interview the user one question at a time, with a recommended answer each round, until every branch of a plan's decision tree is resolved.
 - **logic-first-review** — Sub-skill enforcing the *Current logic → Why it breaks → What should happen → Suggested change* review format.
 - **pr-agent-loop** — Trigger, wait for, fetch, and validate the Codium PR-agent (github-actions[bot]) auto-review on a PR.
 - **repo-wiki** — Generate and maintain a graph-linked living wiki for a repo across the microservice ecosystem.
