@@ -6,18 +6,12 @@ source_refs: ["raw/architecture.md#layers"]
 tags: [clean-architecture, layers, dependency-rule]
 pattern: "clean-architecture"
 graph_edges:
-  - target: "pages/architecture/cqrs-pattern"
-    relation: "contains"
-  - target: "pages/architecture/dependency-injection"
-    relation: "depends-on"
-  - target: "pages/api/auth-endpoints"
-    relation: "contains"
-  - target: "pages/api/payment-endpoints"
-    relation: "contains"
-  - target: "pages/data/payment-entity"
-    relation: "contains"
-  - target: "pages/database/typeorm-config"
-    relation: "contains"
+  - "pages/architecture/cqrs-pattern|contains"
+  - "pages/architecture/dependency-injection|depends-on"
+  - "pages/api/auth-endpoints|contains"
+  - "pages/api/payment-endpoints|contains"
+  - "pages/data/payment-entity|contains"
+  - "pages/database/typeorm-config|contains"
 created: 2026-04-14
 updated: 2026-04-14
 ---

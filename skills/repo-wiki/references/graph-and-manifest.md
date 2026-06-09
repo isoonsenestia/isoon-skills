@@ -18,13 +18,12 @@ Every page's frontmatter declares its outgoing edges:
 
 ```yaml
 graph_edges:
-  - target: "pages/api/auth-endpoints"
-    relation: "implements"
-  - target: "pages/data/user-entity"
-    relation: "uses"
-  - target: "pages/database/users-table"
-    relation: "persisted-by"
+  - "pages/api/auth-endpoints|implements"
+  - "pages/data/user-entity|uses"
+  - "pages/database/users-table|persisted-by"
 ```
+
+Each entry is a single string of the form `"target|relation"`. The `|` separator matches the body wikilink syntax (`[[page|relation]]`), and the flat-string shape renders cleanly in Obsidian's properties panel as a multi-text list — object-of-fields shapes get collapsed to inline JSON there and become unreadable. Parsers split on the first `|`.
 
 **Rule:** every link expresses a relationship (`implements`, `uses`, `persisted-by`, `calls`, etc.). No untyped edges.
 

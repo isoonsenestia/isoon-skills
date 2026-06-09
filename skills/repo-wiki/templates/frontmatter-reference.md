@@ -15,8 +15,7 @@ type: {dimension-specific type}
 source_refs: ["raw/api-reference.md#section-anchor"]
 tags: [auth, payment, user, stripe]
 graph_edges:
-  - target: "pages/dimension/page-name"
-    relation: "relationship-type"
+  - "pages/dimension/page-name|relationship-type"
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
@@ -29,9 +28,10 @@ updated: YYYY-MM-DD
 - **type**: Dimension-specific (see below)
 - **source_refs**: Array of raw doc paths, optionally with `#section` anchors
 - **tags**: Lowercase, hyphenated. Used for cross-cutting discovery.
-- **graph_edges**: Array of typed connections to other pages
+- **graph_edges**: Array of typed connections to other pages. Each entry is a single string in the form `"target|relation"` where:
   - `target`: Relative path from `wiki/` (e.g., `pages/api/auth-endpoints`)
   - `relation`: Describes the nature of the connection (see Relationship Types)
+  - String-encoded (not object-encoded) so Obsidian's properties panel renders it as a proper multi-text list rather than collapsed JSON. The `|` separator mirrors the typed-wikilink syntax `[[page|relation]]` used in body prose.
 - **created/updated**: ISO dates, updated on every edit
 
 ---

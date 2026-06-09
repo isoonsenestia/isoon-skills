@@ -12,6 +12,8 @@ set -uo pipefail
 
 cat >/dev/null  # discard hook stdin
 
+[ "${CLAUDE_NOMEM:-0}" = "1" ] && exit 0
+
 LEARNED_DIR="${HOME}/.claude/skills/learned"
 mkdir -p "$LEARNED_DIR" || exit 0
 

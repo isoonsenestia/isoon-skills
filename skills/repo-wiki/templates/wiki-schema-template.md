@@ -205,10 +205,8 @@ type: endpoint | pattern | flow | entity | table | client | overview | compariso
 source_refs: ["raw/api-reference.md#section", "raw/architecture.md"]
 tags: [auth, payment, user]
 graph_edges:
-  - target: "pages/api/auth-endpoints"
-    relation: "implements"
-  - target: "pages/data/user-entity"
-    relation: "uses"
+  - "pages/api/auth-endpoints|implements"
+  - "pages/data/user-entity|uses"
 created: {date}
 updated: {date}
 ---

@@ -8,18 +8,12 @@ methods: [POST]
 base_path: "/api/v1/auth"
 auth_required: false
 graph_edges:
-  - target: "pages/business/login-flow"
-    relation: "implements"
-  - target: "pages/data/user-entity"
-    relation: "accepts"
-  - target: "pages/data/session-entity"
-    relation: "returns"
-  - target: "pages/database/sessions-table"
-    relation: "persisted-by"
-  - target: "pages/integration/redis-session-store"
-    relation: "delegates-to"
-  - target: "pages/architecture/middleware-chain"
-    relation: "part-of"
+  - "pages/business/login-flow|implements"
+  - "pages/data/user-entity|accepts"
+  - "pages/data/session-entity|returns"
+  - "pages/database/sessions-table|persisted-by"
+  - "pages/integration/redis-session-store|delegates-to"
+  - "pages/architecture/middleware-chain|part-of"
 created: 2026-04-14
 updated: 2026-04-14
 ---
