@@ -7,12 +7,21 @@ Personal Claude Code skills.
 | Skill | Use when |
 |---|---|
 | `save-skill` | Capturing a new technique as a SKILL.md |
+| `continuous-learning` | Extracting a solved non-trivial problem into a reusable skill at session end |
 | `fe-next` | Working in a Senestia Next.js codebase |
 | `repo-wiki` | Documenting or navigating a repo / microservice ecosystem |
 | `review` | Reviewing a pull request |
 | `logic-first-review` | Sub-skill for the *Current logic → Why it breaks → What should happen → Suggested change* format |
 | `self-review-before-complete` | Before claiming a task done — reviews your own diff |
+| `writing-tests` | Authoring a unit/integration/e2e test (esp. dev-squad TDD tasks) |
+| `checking-ready-to-develop` | Gating a backlog item against the Definition of Ready before a sprint |
+| `senestia-bug-intake` | Triaging a customer bug into an engineering ticket on the PECS board |
+| `pr-agent-loop` | Driving the Codium PR-agent auto-review on a PR |
+| `grill-me` | Stress-testing a plan/design one question at a time, capturing decisions |
+| `building-concept-explainer-html` | Building a single-file interactive HTML page that teaches a concept |
 | `analyzing-phone-data-quality` | Auditing raw phone-number CSVs (Thai context) |
+| `memory-review` | Walking the auto-memory directory entry-by-entry to keep / update / delete |
+| `tidy-memory` | Auditing and pruning journal, transcripts, and skill drafts |
 
 See `skills/_meta/INDEX.md` for the canonical registry and `skills/_meta/BEST_PRACTICES.md` for the authoring rules.
 

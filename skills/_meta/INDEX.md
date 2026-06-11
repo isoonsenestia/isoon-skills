@@ -7,6 +7,7 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 - **analyzing-phone-data-quality** — Audit raw phone-number CSVs: detect separators, validate against a national standard, output a cleansing plan.
 - **building-concept-explainer-html** — Build a single-file interactive HTML page that teaches a concept; eight beats, seven UI primitives, single-file vanilla-JS baseline.
 - **checking-ready-to-develop** — Gate a backlog item against Senestia's Definition of Ready (6 required + 2 optional criteria, owners, deprecated security review) before it enters a sprint.
+- **continuous-learning** — Extract a non-trivial solution (debugging technique, workaround, project quirk, resteer pattern) into a reusable skill at session end so future sessions don't repeat the work.
 - **fe-next** — Frontend agent for Senestia Next.js apps; triggers on component/page/hook/style work.
 - **grill-me** — Interview the user one question at a time with a recommended answer each round; capture each resolution into a sibling `<doc> - Grilled #N.md` (live decisions ledger + end-of-session folded sections).
 - **logic-first-review** — Sub-skill enforcing the *Current logic → Why it breaks → What should happen → Suggested change* review format.
@@ -18,6 +19,7 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 - **self-review-before-complete** — Apply logic-first review to your own diff before claiming a task is done.
 - **senestia-bug-intake** — Triage a customer-reported bug in Senestia's Atlassian: file the engineering counterpart on the PECS board with sprint/label/link, post a Thai short summary back on the source.
 - **tidy-memory** — On-demand audit + tier-by-tier prune of journal, transcripts, and skill drafts (defers auto-memory to memory-review).
+- **writing-tests** — Pick the smallest test tier (unit/integration/e2e) that exercises a dev-squad TDD task and write assertions that fail for the right reason; per-stack idioms for go and nextjs.
 
 ## Meta
 

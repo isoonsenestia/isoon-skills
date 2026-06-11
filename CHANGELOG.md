@@ -6,12 +6,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
-### Changed
-- `grill-me` now produces a durable per-session artifact: a sibling `<Source Title> - Grilled #N.md` next to the source markdown doc. The file has a live `## Decisions` ledger (appended per resolved question, row schema `# | Question | Recommended | User resolution | Affects §`) and a `## Folded sections` block (written once at session end, rewriting only the source §sections the grill touched). N increments from existing `Grilled #M` siblings; behavior is generic across any source doc.
-- Source-doc discovery: skill scans recent conversation turns for `.md` paths, lists candidates for the user to pick, and asks if none are found — does not silently guess.
+## [0.2.0] — 2026-06-11
 
 ### Added
-- `skills/grill-me/references/document-output.md` — full output template, decision-row schema rationale, N-detection regex, worked example, and edge-case handling for the new artifact behavior.
+- New skills since 0.1.0: `building-concept-explainer-html`, `checking-ready-to-develop`, `continuous-learning`, `grill-me`, `memory-review`, `pr-agent-loop`, `senestia-bug-intake`, `tidy-memory`, `writing-tests`.
+- `scripts/sync-cowork.sh` — mirror repo skills into the newest Claude Desktop ("Cowork") session; `install.sh --all` runs it after the CLI sync.
+- `skills/grill-me/references/document-output.md` — full output template, decision-row schema rationale, N-detection regex, worked example, and edge-case handling for the grilled-artifact behavior.
+- `internal-memo/` (gitignored) as a scratch area.
+
+### Changed
+- `grill-me` now produces a durable per-session artifact: a sibling `<Source Title> - Grilled #N.md` next to the source markdown doc. The file has a live `## Decisions` ledger (appended per resolved question, row schema `# | Question | Recommended | User resolution | Affects §`) and a `## Folded sections` block (written once at session end, rewriting only the source §sections the grill touched). N increments from existing `Grilled #M` siblings; behavior is generic across any source doc.
+- `grill-me` source-doc discovery: skill scans recent conversation turns for `.md` paths, lists candidates for the user to pick, and asks if none are found — does not silently guess.
+- `save-skill` now writes the skill into this repo and symlinks via `install.sh`, instead of writing directly into `~/.claude/skills/`.
+- `analyzing-phone-data-quality` aligned with the strict-validity report format.
+- `review` gained a validation pass for Bug/Medium issues.
+- `README.md`, `skills/_meta/INDEX.md`, and `.claude-plugin/plugin.json` refreshed to list the full current skill catalog.
 
 ## [0.1.0] — 2026-05-13
 
