@@ -39,8 +39,10 @@ ls contexts/useAuth* contexts/AuthContext* 2>/dev/null
 grep -rl "React\.FC"                  --include="*.tsx" components/ app/ src/ 2>/dev/null | wc -l
 grep -rl "export default function"    --include="*.tsx" components/ app/ src/ 2>/dev/null | wc -l
 
-# Ant Design version
-grep '"antd"' package.json
+# UI system — AntD vs shadcn/CVA (LIFF apps)
+grep '"antd"' package.json                  # AntD repos: v4 Modal=visible, v5=open
+ls src/components/ui 2>/dev/null             # shadcn/CVA primitives — no AntD
+grep '"class-variance-authority"\|"@line/liff"' package.json
 ```
 
 ### Signal → pattern → reference
@@ -61,6 +63,7 @@ grep '"antd"' package.json
 | Any user-visible string | `t()` via next-intl | `references/i18n.md` |
 | `"antd": "4.*"` | v4 — Modal uses `visible` | — |
 | `"antd": "5.*"` | v5 — Modal uses `open` | — |
+| `src/components/ui/*` + `class-variance-authority` / `@line/liff` | shadcn/CVA UI (LIFF apps) — no AntD, Tailwind HSL tokens, per-section StoreProvider | `references/components.md` + `references/state.md` |
 
 ### Directory layout
 
@@ -79,9 +82,10 @@ middleware.ts ← auth + i18n routing
 
 ## Universal Rules
 
-- Tailwind only — no CSS Modules, no inline styles.
-- Ant Design for interactive controls (Table, Form, Modal, Tabs, Alert, Spin, Button).
+- Tailwind only — no CSS Modules, no inline styles. Colors are HSL CSS-var tokens; `body` bg is tinted (not white) — set `bg-white` for white pages (see `references/components.md`).
+- UI controls depend on the repo: **AntD repos** use Ant Design; **shadcn/CVA repos** (LIFF apps) use local `src/components/ui/*` (CVA) + `react-icons`, no AntD. Profile first.
 - App Router interactive components add `"use client"`.
+- Locale-aware navigation: import `useRouter`/`Link` from `@/i18n/routing`, not `next/navigation`.
 - Default export (not named) for components.
 - No `any` in props.
 - Never put axios calls directly in components.
@@ -95,7 +99,10 @@ Before claiming done:
 
 - `npx tsc --noEmit` passes
 - `npm run lint` passes
+- `npm run build` passes — App Router catches route/SSR errors (e.g. missing `<Suspense>` around `useSearchParams`) that `tsc` misses
 - No regressions in callers of any shared component you touched
+- Browserless smoke-test: `npm run dev` + `curl --retry 30 --retry-connrefused --retry-delay 1` (bare loops race startup), grep SSR'd HTML; LIFF is mocked in dev
+- No test runner? Say so before adding one; Vitest (alias `@`→`src`, node env) covers pure logic, kept out of the build
 
 Do not deliver: untyped `any`, hardcoded Thai/English strings, inline styles, CSS Modules, duplicate components, direct axios in pages.
 
@@ -117,3 +124,8 @@ mkdir -p ~/.done && touch ~/.done/Frontend
 | `visible` prop on AntD v5 Modal | Use `open` — `visible` was removed |
 | New endpoint that needs a backend route | Note it for the Backend agent; do not create it here |
 | Made up entity names | Read the wiki — use real domain terminology |
+| Assumed AntD; repo has none | LIFF/shadcn repos use `src/components/ui/*` (CVA) + react-icons — profile first |
+| Redux hooks crash in a new route | `StoreProvider` is per-section — add a `layout.tsx` wrapping `<StoreProvider>` — see `references/state.md` |
+| New page renders a tinted/lavender background | `body` is `bg-background` (token), not white — set `bg-white` on a full-width wrapper; CVA `outline` Button is `bg-background` too |
+| `next/navigation` `useRouter`/`Link` drops the locale | Import from `@/i18n/routing`; wrap a `useSearchParams` client component in `<Suspense>` |
+| Identity `createSelector` logs an SSR "returned its own inputs" warning | Use a plain selector for field reads — see `references/state.md` |

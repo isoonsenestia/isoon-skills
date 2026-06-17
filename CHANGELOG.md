@@ -6,6 +6,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+### Changed
+- `fe-next` refreshed with the shadcn/CVA LIFF flavor: AntD-vs-CVA profiling, `src/components/ui/*` primitives + `react-icons`, Tailwind HSL token / `bg-white` rules, `@/i18n/routing` locale-aware navigation, per-section `StoreProvider`, the identity-`createSelector` SSR warning, and build/Vitest output requirements.
+
 ## [0.3.0] — 2026-06-17
 
 ### Added
