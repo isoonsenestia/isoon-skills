@@ -6,6 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+## [0.3.0] — 2026-06-17
+
+### Added
+- Three skills extracted from an obesity-assessment frontend session:
+  - `restack-after-amend` — re-stack dependent branches after rewriting a base commit in a stacked-PR chain; `git rebase --onto <new-base> <old-boundary>` to drop the superseded commit (plain rebase for additive changes).
+  - `verify-ui-against-design-headless` — pixel-verify a component with no DOM test runner: throwaway preview route + headless-Chrome screenshot + `getBoundingClientRect()` readout; a green build is not a pixel match.
+  - `design-feedback-as-oracle` — when a literal design fix is rejected, render side-by-side candidates and let the user pick; decouple visual iteration from the expensive commit/rebase step.
+- `README.md`, `skills/_meta/INDEX.md`, and `.claude-plugin/plugin.json` updated to list the three new skills.
+
 ## [0.2.0] — 2026-06-11
 
 ### Added

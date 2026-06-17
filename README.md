@@ -22,6 +22,9 @@ Personal Claude Code skills.
 | `analyzing-phone-data-quality` | Auditing raw phone-number CSVs (Thai context) |
 | `memory-review` | Walking the auto-memory directory entry-by-entry to keep / update / delete |
 | `tidy-memory` | Auditing and pruning journal, transcripts, and skill drafts |
+| `restack-after-amend` | Re-stacking dependent branches after amending a base commit in a stacked-PR chain (`rebase --onto`) |
+| `verify-ui-against-design-headless` | Pixel-verifying a UI component against a design via headless Chrome (no DOM test runner) |
+| `design-feedback-as-oracle` | A literal design fix was rejected — disambiguate with side-by-side candidates, not another guess |
 
 See `skills/_meta/INDEX.md` for the canonical registry and `skills/_meta/BEST_PRACTICES.md` for the authoring rules.
 

@@ -1,7 +1,7 @@
 {
   "name": "isoon-skills",
-  "version": "0.2.0",
-  "description": "Personal Claude Code skills by isoon: skill authoring (save-skill, continuous-learning), the review chain (review, logic-first-review, self-review-before-complete, writing-tests), Senestia engineering workflows (fe-next, repo-wiki, checking-ready-to-develop, senestia-bug-intake, pr-agent-loop), thinking/output tools (grill-me, building-concept-explainer-html, analyzing-phone-data-quality), and memory hygiene (memory-review, tidy-memory).",
+  "version": "0.3.0",
+  "description": "Personal Claude Code skills by isoon: skill authoring (save-skill, continuous-learning), the review chain (review, logic-first-review, self-review-before-complete, writing-tests), Senestia engineering workflows (fe-next, repo-wiki, checking-ready-to-develop, senestia-bug-intake, pr-agent-loop), git & iteration workflows (restack-after-amend, verify-ui-against-design-headless, design-feedback-as-oracle), thinking/output tools (grill-me, building-concept-explainer-html, analyzing-phone-data-quality), and memory hygiene (memory-review, tidy-memory).",
   "author": {
     "name": "isoon",
     "email": "isoon@senestia.com"
