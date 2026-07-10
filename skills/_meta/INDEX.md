@@ -21,6 +21,7 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 - **save-skill** — Capture a new technique as a properly-formatted SKILL.md and register it here.
 - **self-review-before-complete** — Apply logic-first review to your own diff before claiming a task is done.
 - **senestia-bug-intake** — Triage a customer-reported bug in Senestia's Atlassian: file the engineering counterpart on the PECS board with sprint/label/link, post a Thai short summary back on the source.
+- **technical-design-doc** — Draft a technical design doc from house templates: FULL (~3-4 pages, alternatives argued) or LITE (one-page RFC); not for PRDs, charters, or story cards.
 - **tidy-memory** — On-demand audit + tier-by-tier prune of journal, transcripts, and skill drafts (defers auto-memory to memory-review).
 - **verify-ui-against-design-headless** — Pixel-verify a UI component with no DOM test runner: throwaway preview route + headless-Chrome screenshot + `getBoundingClientRect()` readout; a green build is not a pixel match.
 - **writing-tests** — Pick the smallest test tier (unit/integration/e2e) that exercises a dev-squad TDD task and write assertions that fail for the right reason; per-stack idioms for go and nextjs.
