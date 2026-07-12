@@ -8,6 +8,7 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 - **building-concept-explainer-html** — Build a single-file interactive HTML page that teaches a concept; eight beats, seven UI primitives, single-file vanilla-JS baseline.
 - **checking-ready-to-develop** — Gate a backlog item against Senestia's Definition of Ready (6 required + 2 optional criteria, owners, deprecated security review) before it enters a sprint.
 - **continuous-learning** — Extract a non-trivial solution (debugging technique, workaround, project quirk, resteer pattern) into a reusable skill at session end so future sessions don't repeat the work.
+- **design-doc-self-review** — Before handing a design/spec/TDD doc to a reviewer, self-check six defect classes (overclaim, internal contradiction, stale framing, rationale gap, name-hides-intent, claim-scope); surface requirement questions instead of auto-fixing them.
 - **design-feedback-as-oracle** — When a literal design fix is rejected, render side-by-side candidate variants and let the user pick; decouple cheap visual iteration from the expensive commit/rebase step.
 - **dispatch** — Turn a one-line goal into a dev-squad plan.md (strict format, repos.json keys), preflight the target repos, hard-stop for approval, then run the tmux dispatch pipeline.
 - **fe-next** — Frontend agent for Senestia Next.js apps; triggers on component/page/hook/style work.
