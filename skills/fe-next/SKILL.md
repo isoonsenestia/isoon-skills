@@ -52,6 +52,7 @@ grep '"class-variance-authority"\|"@line/liff"' package.json
 | `pages/` or `src/pages/` | Pages Router | `references/playbooks.md` |
 | `app/` or `src/app/` | App Router | `references/playbooks.md` |
 | Building / fixing a component | A or B by grep count | `references/components.md` |
+| Input includes a UI image (mock/screenshot/flow) to build | Intake before code - spec first | `ui-image-intake` skill |
 | Adding / changing an API call | `XxxService` / `xxxRepository` / inline thunk | `references/services.md` |
 | Configuring HTTP | next/config / runtime / proxy | `references/axios.md` |
 | Writing a data-fetching hook | manual / React Query | `references/hooks.md` |
@@ -129,3 +130,4 @@ mkdir -p ~/.done && touch ~/.done/Frontend
 | New page renders a tinted/lavender background | `body` is `bg-background` (token), not white — set `bg-white` on a full-width wrapper; CVA `outline` Button is `bg-background` too |
 | `next/navigation` `useRouter`/`Link` drops the locale | Import from `@/i18n/routing`; wrap a `useSearchParams` client component in `<Suspense>` |
 | Identity `createSelector` logs an SSR "returned its own inputs" warning | Use a plain selector for field reads — see `references/state.md` |
+| Guessed px/hex from a pasted mock | Run `ui-image-intake` first - snap to tokens, interview semantics, build from the spec |
