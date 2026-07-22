@@ -23,6 +23,7 @@ Personal Claude Code skills.
 | `memory-review` | Walking the auto-memory directory entry-by-entry to keep / update / delete |
 | `tidy-memory` | Auditing and pruning journal, transcripts, and skill drafts |
 | `restack-after-amend` | Re-stacking dependent branches after amending a base commit in a stacked-PR chain (`rebase --onto`) |
+| `ui-image-intake` | Building/matching UI from a pasted image — snap to the design system, interview semantics, emit a semantic spec + a `design.md` visual reference |
 | `verify-ui-against-design-headless` | Pixel-verifying a UI component against a design via headless Chrome (no DOM test runner) |
 | `design-feedback-as-oracle` | A literal design fix was rejected — disambiguate with side-by-side candidates, not another guess |
 
