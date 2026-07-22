@@ -72,12 +72,12 @@ mcp__claude_ai_Atlassian__createIssueLink
 
 ### Step 5 — Thai short summary (mandatory, iterative)
 
-Apply the style memory `feedback-thai-writing-style`: no casual intensifiers (`เป๊ะ`, `เลย`, `มากๆ`), prefer labeled sub-points (`สาเหตุ:`) over inline bold, avoid robotic translations of tech terms.
+Apply the Thai writing-style preference in `preference.md` (this skill's directory): no casual intensifiers (`เป๊ะ`, `เลย`, `มากๆ`), prefer labeled sub-points (`สาเหตุ:`) over inline bold, avoid robotic translations of tech terms.
 
 Suggested skeleton:
 
 ```
-**สรุปสาเหตุและแนวทางแก้ (สั้น)**
+**สรุปสาเหตุและแนวทางแก้**
 
 **สาเหตุ**: <1-2 sentences in plain Thai>
 
@@ -91,7 +91,7 @@ Suggested skeleton:
 
 **Draft → present → revise loop.** Show the draft to the user *before* posting. Apply their wording edits. Re-present. Repeat until the user says **"enough for feedback"** (or equivalent — "ok ship it", "save", "good"). Then post via `addCommentToJiraIssue`.
 
-If the feedback reveals a new persistent style rule, append it to `feedback-thai-writing-style.md` after the user signals enough.
+If the feedback reveals a new persistent style rule, append it to `preference.md` (this skill's directory) after the user signals enough.
 
 ### Step 6 — Report
 
@@ -131,5 +131,5 @@ If the feedback reveals a new persistent style rule, append it to `feedback-thai
 
 ## Related
 
-- **REQUIRED BACKGROUND:** `feedback-thai-writing-style` memory — Thai copy style rules.
+- **REQUIRED BACKGROUND:** `preference.md` (this skill's directory) — Thai copy style rules.
 - **RELATED:** `review` — for the engineering ticket's eventual PR review.
