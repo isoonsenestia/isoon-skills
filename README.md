@@ -6,6 +6,7 @@ Personal Claude Code skills.
 
 | Skill | Use when |
 |---|---|
+| `adhd` | Open-ended design/naming/API/fuzzy-debug decisions needing wide divergent ideation (third-party: [UditAkhourii/adhd](https://github.com/UditAkhourii/adhd)) |
 | `save-skill` | Capturing a new technique as a SKILL.md |
 | `continuous-learning` | Extracting a solved non-trivial problem into a reusable skill at session end |
 | `fe-next` | Working in a Senestia Next.js codebase |

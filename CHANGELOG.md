@@ -6,6 +6,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+### Added
+- `adhd` — third-party skill vendored from [UditAkhourii/adhd](https://github.com/UditAkhourii/adhd) (MIT): parallel divergent ideation — 5 isolated Agent branches under distorted cognitive frames, then a critic pass that scores, clusters, prunes traps, and deepens the top 3. `SOURCE-SPEC.md` copied alongside since the skill body references it.
+
 ### Changed
 - `fe-next` refreshed with the shadcn/CVA LIFF flavor: AntD-vs-CVA profiling, `src/components/ui/*` primitives + `react-icons`, Tailwind HSL token / `bg-white` rules, `@/i18n/routing` locale-aware navigation, per-section `StoreProvider`, the identity-`createSelector` SSR warning, and build/Vitest output requirements.
 

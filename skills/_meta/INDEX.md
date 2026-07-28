@@ -4,6 +4,7 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 
 ## Skills
 
+- **adhd** — Parallel divergent ideation (third-party, [UditAkhourii/adhd](https://github.com/UditAkhourii/adhd)): spawn 5 isolated Agent branches under distorted cognitive frames, then score, cluster, prune traps, and deepen the top 3; for open-ended design, naming, API surface, and fuzzy debugging.
 - **analyzing-phone-data-quality** — Audit raw phone-number CSVs: detect separators, validate against a national standard, output a cleansing plan.
 - **building-concept-explainer-html** — Build a single-file interactive HTML page that teaches a concept; eight beats, seven UI primitives, single-file vanilla-JS baseline.
 - **checking-ready-to-develop** — Gate a backlog item against Senestia's Definition of Ready (6 required + 2 optional criteria, owners, deprecated security review) before it enters a sprint.
