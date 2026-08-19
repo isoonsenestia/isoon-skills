@@ -11,6 +11,9 @@ Personal Claude Code skills.
 | `fe-next` | Working in a Senestia Next.js codebase |
 | `repo-wiki` | Documenting or navigating a repo / microservice ecosystem |
 | `review` | Reviewing a pull request |
+| `design-doc-self-review` | Self-checking a design/spec/estimation doc before handing it to a reviewer |
+| `technical-design-doc` | Drafting a technical design doc - FULL (~3-4 pages) or LITE one-page RFC |
+| `dispatch` | Turning a one-line goal into a dev-squad plan.md and running the tmux dispatch pipeline |
 | `logic-first-review` | Sub-skill for the *Current logic → Why it breaks → What should happen → Suggested change* format |
 | `self-review-before-complete` | Before claiming a task done — reviews your own diff |
 | `writing-tests` | Authoring a unit/integration/e2e test (esp. dev-squad TDD tasks) |
