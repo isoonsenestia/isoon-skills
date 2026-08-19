@@ -87,4 +87,4 @@ After deletion, re-run `du -sh` on the affected directories and show the delta. 
 ## Related
 
 - **RELATED:** memory-review (per-file curation of auto-memory entries)
-- **RELATED:** save-skill (rescue a `skills/learned/draft-*` before tidy deletes it)
+- **RELATED:** your skill-authoring skill (rescue a `skills/learned/draft-*` before tidy deletes it)

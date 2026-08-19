@@ -7,7 +7,7 @@ description: Use when a PR is backed by Codium PR-agent (github-actions[bot] run
 
 ## Overview
 
-Codium PR-agent (the `github-actions[bot]`) posts a persistent **PR Reviewer Guide** comment plus a **PR Code Suggestions** comment on PR open. Subsequent pushes do NOT auto-retrigger it — you re-trigger with `/review` / `/improve` PR comments. The bot edits the persistent review in place but sometimes replaces the suggestions comment by deleting + posting a new one. After fetching findings, pipe each through the `review` skill's Validation Pass before accepting or declining.
+Codium PR-agent (the `github-actions[bot]`) posts a persistent **PR Reviewer Guide** comment plus a **PR Code Suggestions** comment on PR open. Subsequent pushes do NOT auto-retrigger it — you re-trigger with `/review` / `/improve` PR comments. The bot edits the persistent review in place but sometimes replaces the suggestions comment by deleting + posting a new one. After fetching findings, pipe each through the Validation Pass (Step 4) before accepting or declining.
 
 ## When to Use
 
@@ -18,7 +18,7 @@ Codium PR-agent (the `github-actions[bot]`) posts a persistent **PR Reviewer Gui
 
 **When NOT to use:**
 - The repo doesn't have `pr_agent.yaml` — the bot won't run, this skill does nothing.
-- You're reviewing the diff yourself — use the `review` skill directly.
+- You're reviewing the diff yourself — use the bundled `/code-review` skill directly.
 - You need a one-off Q&A — use `/ask <question>` as a PR comment manually; this skill is for the persistent review/improve cycle.
 
 ## The Pattern
@@ -68,7 +68,7 @@ If a comment 404s when fetched by id, the bot deleted the placeholder and posted
 
 ### Step 4 — Validate each finding
 
-For every Bug/Medium-impact suggestion, pipe through the `review` skill's Validation Pass:
+For every Bug/Medium-impact suggestion, pipe through the Validation Pass:
 
 1. Re-read the cited file at the cited lines.
 2. Trace the failure scenario step by step.
@@ -110,5 +110,4 @@ Present a table:
 
 ## Related
 
-- **REQUIRED BACKGROUND:** `review` — the Validation Pass section is the gate for Step 4.
 - **RELATED:** `logic-first-review` — the structured format applies to bot suggestions too.

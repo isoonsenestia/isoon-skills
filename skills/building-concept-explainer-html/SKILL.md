@@ -86,5 +86,5 @@ Use two cross-linked pages when the concept has *two distinct audiences or facet
 
 ## Related
 
-- **RELATED:** save-skill — for packaging this technique (or a refinement) as a future skill
+- **RELATED:** your skill-authoring skill — for packaging this technique (or a refinement) as a future skill
 - **RELATED:** repo-wiki — wiki sources are the most common upstream feed for these pages

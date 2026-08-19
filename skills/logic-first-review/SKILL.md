@@ -1,6 +1,6 @@
 ---
 name: logic-first-review
-description: Use as a sub-skill when another skill (review, self-review-before-complete, security-review) needs the structured review format — Current logic → Why it breaks → What should happen → Suggested change. Pattern reference, not a standalone trigger
+description: Use as a sub-skill when another skill (/code-review, self-review-before-complete, security-review) needs the structured review format — Current logic → Why it breaks → What should happen → Suggested change. Pattern reference, not a standalone trigger
 ---
 
 # Logic-First Code Review
@@ -13,7 +13,7 @@ A suggestion without grounded logic is an assertion the reader can't verify. For
 
 ## When to Use
 
-- Reviewing a pull request (use with `review` skill or GitHub MCP for fetching the diff)
+- Reviewing a pull request (use with the bundled `/code-review` skill or GitHub MCP for fetching the diff)
 - Reviewing a local diff before commit (use with `self-review-before-complete`)
 - Reviewing a single file or function someone hands you
 - Any time you're producing structured feedback on code you didn't just write
@@ -78,7 +78,7 @@ Severity levels:
 ## Focus Areas (in priority order)
 
 1. **Correctness** — logic bugs, edge cases, off-by-one, type/size mismatches, silent invalid output
-2. **Regressions & blast radius** — behavior removed or narrowed versus the code being replaced, and the downstream fallout of the change: callers of changed/renamed/removed functions, importers of changed symbols, behavioral-contract shifts (same signature, different return value / thrown error / side-effect), and readers or writers of a changed schema, data shape, config key, or shared state. On a bare pasted diff, at least name the dependents that need checking; with repo access, trace them (see the `review` / `self-review-before-complete` blast-radius step)
+2. **Regressions & blast radius** — behavior removed or narrowed versus the code being replaced, and the downstream fallout of the change: callers of changed/renamed/removed functions, importers of changed symbols, behavioral-contract shifts (same signature, different return value / thrown error / side-effect), and readers or writers of a changed schema, data shape, config key, or shared state. On a bare pasted diff, at least name the dependents that need checking; with repo access, trace them (see the `self-review-before-complete` blast-radius step)
 3. **Duplication** — identical blocks that will drift; extract helpers
 4. **Architecture** — business logic leaking into wrong layer, shared utilities missing
 5. **Tests** — coverage of edge cases, not just happy path

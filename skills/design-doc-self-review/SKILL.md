@@ -56,4 +56,4 @@ Adding a column/scope to satisfy an *imagined* reviewer concern, before the requ
 
 ## Related
 
-- **RELATED:** self-review-before-complete, logic-first-review, grill-me
+- **RELATED:** self-review-before-complete, logic-first-review, whichever grilling skill is installed
