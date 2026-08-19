@@ -11,9 +11,23 @@ description: Use when asked to review a pull request or code changes — fetches
 2. Run `gh pr view <number> --json title,body,files,additions,deletions,commits` to get context.
 3. Run `gh pr diff <number>` to get the full diff.
 4. For large diffs, read specific changed files to understand surrounding context.
-5. Draft the Issues section per the format below.
-6. **Validate every Bug/Medium issue before publishing** (see Validation Pass).
-7. Adjust severity or remove invalidated issues, then publish the structured review.
+5. **Trace the blast radius** (see Blast-Radius Trace below).
+6. Draft the Issues section per the format below.
+7. **Validate every Bug/Medium issue before publishing** (see Validation Pass).
+8. Adjust severity or remove invalidated issues, then publish the structured review.
+
+## Blast-Radius Trace
+
+A diff only shows what changed, not what depended on it. Before drafting issues, map the fallout of the change into the code it does **not** touch.
+
+For every symbol the diff changes, renames, or removes — and any changed schema, DB column, config key, or data shape — find its dependents with `grep` / `gh` / `rg`:
+
+- **Callers** of changed/renamed/removed functions — do they still pass valid args and handle the new return/behavior?
+- **Importers** of a changed type, constant, or export — does the new signature or shape still fit?
+- **Behavioral-contract shifts** — same signature, changed return value, thrown error, null-handling, or side-effect. The compiler will not catch these; only reading the caller will.
+- **Readers/writers of shared state** — a changed schema, config key, or global has consumers beyond direct code callers; find them too.
+
+Open each dependent and decide: real break, or fine. **Report a downstream break only when you have opened the site and can state the observable consequence** (e.g. "unknown id now returns 200 with guest data instead of 404 in `profileHandler`"). An untraced "this may affect callers" fails the Publishing Gate — either trace it to a concrete break or note the site as checked-and-fine. Do not flag a dependent where the changed path is unreachable (e.g. a caller that only passes ids known to exist).
 
 ## Output Format
 
@@ -48,6 +62,8 @@ Severity levels: **Bug** (incorrect behavior, data loss, silent failures), **Med
 ## Validation Pass
 
 Before publishing, validate every **Bug** and **Medium** issue. Skip Low (style nits don't earn the cost).
+
+**This is the `logic-first-review` Publishing Gate applied at PR scope** — the three checks below (re-read → trace → guard → trigger) are that gate plus PR-specific tagging. Keep the two in sync when editing either.
 
 For each Bug/Medium claim:
 

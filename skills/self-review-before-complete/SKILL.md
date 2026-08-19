@@ -53,10 +53,20 @@ If you find yourself making any of those arguments, the skill is firing correctl
 1. Get the diff:    git diff HEAD          (default — covers staged + unstaged)
                     git diff --staged      (only if narrowing to staged)
                     git show HEAD          (if work is already committed / amending)
-2. Apply pattern:   Use logic-first-review skill on the diff
-3. Resolve issues:  Bug/Medium → fix before claiming done
+2. Trace blast radius: for each symbol you changed/renamed/removed (and any
+                    changed schema, config key, or data shape), grep its
+                    callers/importers/readers, open each, and check for breaks
+                    — including behavioral-contract shifts (same signature,
+                    changed return/throw/side-effect) the compiler won't catch.
+                    Report a caller/downstream break only when you have opened
+                    the site and can state the observable consequence; do NOT
+                    "fix" a caller whose changed path is unreachable (e.g. ids
+                    known to exist) — an untraced "may affect callers" is not a
+                    finding.
+3. Apply pattern:   Use logic-first-review skill on the diff
+4. Resolve issues:  Bug/Medium → fix before claiming done
                     Low        → fix or note as known limitation
-4. Then claim done — and only then.
+5. Then claim done — and only then.
 ```
 
 **REQUIRED SUB-SKILL:** Use `logic-first-review` for the review pattern (Current logic → Why it breaks → What should happen → Suggested change).
@@ -117,7 +127,7 @@ When tracing the diff, deliberately construct inputs the spec didn't mention:
 - Unicode / non-ASCII variants
 - Inputs that combine spec'd transformations in unexpected ways (e.g. `+66` AND a leading trunk `0`)
 
-Pick 2–3 that are most relevant to the change. Walk each through the new code. If any produces silently-wrong output, that's a Bug.
+Pick 2–3 that are most relevant to the change. Walk each through the new code. If any produces silently-wrong output, that's a candidate Bug — then run it through the `logic-first-review` **Publishing Gate** (trace → trigger → no existing guard) before you rank it. An adversarial input that can't actually reach the code (guarded by a type, an upstream validator, or a real caller invariant) is not a Bug on your own diff either — demote it to Low or drop it. Generate wide, gate before ranking.
 
 ## Output of a Self-Review
 

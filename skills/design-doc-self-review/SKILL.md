@@ -1,6 +1,6 @@
 ---
 name: design-doc-self-review
-description: Use when finishing or about to hand off edits to a design / spec / technical-design / estimation doc — before posting it for a reviewer, before a grill, or before declaring a doc edit done. Catches the overclaims, internal contradictions, stale framing, and unstated rationale a reviewer would otherwise be the one to flag.
+description: Use when finishing or about to hand off edits to a design / spec / technical-design / estimation doc — before posting it for a reviewer, before a grill, or before declaring a doc edit done. Also covers postmortems and RFCs. Catches the overclaims, internal contradictions, stale framing, unstated rationale, and padding/restated sections a reviewer would otherwise be the one to flag.
 ---
 
 # Design-Doc Self-Review
@@ -17,11 +17,13 @@ Before a design/spec doc goes to a reviewer, run a self-review for the defect cl
 
 **When NOT to use:**
 - Code review → use `logic-first-review` / `self-review-before-complete`
-- Pure prose/style polish — this is about claims and consistency, not wording
+- Pure prose/style polish — this is about claims, consistency and duplication, not word choice.
+  (Pass 7 cuts *restated sections and padding*, which is structural. Rewriting a sentence to read
+  nicer is not in scope.)
 
 ## The Pattern
 
-Run all six passes. Each is a grep-and-judge over the **whole doc**, not just the section you edited.
+Run all seven passes. Each is a grep-and-judge over the **whole doc**, not just the section you edited.
 
 | # | Defect class | The check |
 |---|---|---|
@@ -31,6 +33,7 @@ Run all six passes. Each is a grep-and-judge over the **whole doc**, not just th
 | 4 | **Rationale gap** | For every non-obvious choice (no FK, generic name, unusual key, retained-after-purge), is the *why* stated inline at the point of definition? If a sharp reviewer would ask "why X?", pre-answer it. |
 | 5 | **Name hides intent** | Does each key/column/field name say what it actually is? (an `id` that is really a `submit_id`; a `resource_id` that is really one specific FK.) |
 | 6 | **Claim scope** | Does each metric/behavior claim hold for **all** entry paths and states, or is it stated universally but true only for the primary path? State the boundary. |
+| 7 | **Padding and restatement** | Pick the doc's 2-3 key facts/numbers and grep each. If a section **restates** rather than adds, delete the section, not the sentence. Then cut: meta-commentary ("this is worth stating because…"), justification for a decision the doc already states, and any deliverable's table of contents sitting inside the action item that asks for it. |
 
 ## The guardrail (most important)
 
@@ -48,6 +51,8 @@ Adding a column/scope to satisfy an *imagined* reviewer concern, before the requ
 | Reviewed only the section you just edited | Every pass is whole-doc — drift hides in the sections you didn't touch |
 | Kept a strong word ("canonical") because it reads well | If it's not true for all cases, it's an overclaim — scope it or cut it |
 | Fixed framing in the doc but not in sibling docs (estimation, blueprint, CLAUDE.md) | Sweep all synced artifacts for the same stale framing |
+| A decision got **narrowed** and the doc got **longer** | Backwards. Narrowing scope should shorten the doc. Extra length here is justification for the narrowing — state the decision, delete the defence |
+| Trimmed sentences but kept every section | Padding is structural. Deleting a section that restates another beats shortening both |
 
 ## Related
 
