@@ -10,9 +10,9 @@ description: Use when a branch's commits are tangled or junk-named ("wip", "stuf
 ```bash
 git branch anchor/<name> HEAD           # 1. anchor the original tip
 git reset --mixed <base>                # 2. all changes unstaged, tree untouched
-rtk proxy git --no-pager diff -U10 --no-color <base> anchor/<name> > /tmp/all.patch
-                                        # 3. per concern: copy all.patch, then cut the other
-                                        #    concerns out of the copy (see Trimming rules below)
+rtk proxy git --no-pager diff -U10 --no-color HEAD anchor/<name> > /tmp/rest.patch
+                                        # 3. re-derive per concern, then cut the OTHER concerns
+                                        #    out of the copy (see Trimming rules below)
 git apply --cached --recount /tmp/concern.patch
 rtk proxy git diff --cached             # 4. review what this commit actually contains
 git commit -m "feat(x): ..."            #    repeat 3-4 per concern
@@ -30,11 +30,11 @@ Split by **concern, not by file**: a config key belongs with the feature that re
 
 **Trimming rules for step 3:**
 
+- **Re-derive `rest.patch` from `HEAD` before every concern, not once from `<base>` up front.** Its context lines describe `HEAD`'s files; once a commit lands, a base-derived patch no longer matches the index and `git apply` fails with "patch does not apply" (`--recount` fixes hunk counts, not context). Because `git diff HEAD anchor/<name>` is always exactly the remainder, `git add -A` is correct for the last concern.
 - **Diff commit-to-commit.** `git diff anchor/<name> -- <file>` compares the anchor against the worktree, which after `reset --mixed` still holds the anchor's content - it returns 0 bytes every time.
 - **Cut a foreign `+` line by deleting it. Cut a foreign `-` line by flipping its `-` to a space**, making it context - deleting it drops that line from this commit's file entirely.
 - **A flipped `-` line must move below the `+` lines you kept.** Left in place, it yields an intermediate commit with the code in the wrong order. That patch applies cleanly, passes a syntax check, and still passes the endpoint gate, because the next `git add -A` restores the correct final tree. Only `git diff --cached` catches it.
 - `--recount` on `git apply` is mandatory: cutting lines invalidates the hunk header counts.
-- `git add -A` is legitimate for the **last** concern only, where the unstaged remainder already *is* that concern.
 
 **Two rtk traps:**
 
