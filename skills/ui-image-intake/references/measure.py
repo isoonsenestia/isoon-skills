@@ -209,6 +209,10 @@ def measure_pitch(lum, region):
     if abs(refined - ac) > 1:
         out["ambiguous"] = True
         out["note"] = "integer-period refinement disagrees with the autocorrelation lag"
+    elif refined < 8:
+        out["ambiguous"] = True
+        out["note"] = ("period below 8px is glyph texture rather than item pitch - "
+                       "restrict the region to the row's own box")
     else:
         out["pitch"] = round(refined, 2)
     return out
