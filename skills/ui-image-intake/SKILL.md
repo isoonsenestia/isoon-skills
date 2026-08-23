@@ -47,14 +47,13 @@ Halt only on **semantics** - states, behaviour, data - reporting "image input ne
 | Eyeballing a value `measure.py` can read | Measure it, then snap; record both numbers and the method |
 | Forcing one token across components measurement shows differ | Share a token only for the same measured kind; record why they differ |
 | Asking about spacing or colour the repo answers | Infer it; the interview is for semantics |
-| Building straight from the image after the interview | Build from the spec and the design reference |
-| Spec without an acceptance checklist | The checklist is what the verify skill consumes |
+| Building from the image after the interview | Build from the spec and design reference |
+| Spec without an acceptance checklist | The checklist is what the verify skill reads |
 | Substituting a plain glyph for a real icon | Use the icon library; record per-icon fidelity |
 | Skipping `design.md` because the spec "covers it" | The spec is semantic; geometry, type and state live in `design.md` |
 
 ## Related
 
-- **RELATED:** `fe-next` (the builder - consumes both artifacts)
-- **RELATED:** `verify-ui-against-design-headless` (the oracle - consumes the saved image, checklist and measured targets)
-- **TOOL:** `references/measure.py` (geometry, colour, type), `references/resolve-tokens.mjs` (repo tokens)
+- **RELATED:** `fe-next` (builder, consumes both artifacts); `verify-ui-against-design-headless` (oracle, consumes the image, checklist and measured targets)
+- **TOOL:** `references/measure.py`, `references/resolve-tokens.mjs`
 - **TEMPLATES:** `references/spec-template.md`, `references/design-template.md`
