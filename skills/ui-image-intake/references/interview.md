@@ -32,5 +32,18 @@ Then one open question: which states exist that the mock does not show? (loading
 Ask only when the choice materially changes implementation:
 
 - New component vs a variant of an existing component.
-- Off-token color: add a new token vs snap to the nearest existing token.
+- Off-token colour: `measure.py` reports the measured hex and its nearest token with a dE. Ask only when dE > 10 - add a token, snap to the nearest, or use the raw hex.
+- `token-source: tailwind-default` in the measure output: the repo's own tokens could not be resolved, so ask for brand colours rather than snapping to stock Tailwind.
 - A region that may overflow: fixed vs scrollable.
+- The capture is refused as not pixel-exact: confirm whether it is an unscaled 1x screenshot, or accept snap mode with no measured rows.
+
+## Situations and their answers
+
+| Situation | Do this |
+|---|---|
+| Colour not in the token set | Ask: add a token vs snap to nearest - never silently invent a hex |
+| New component vs variant of existing | Ask only if the choice changes implementation |
+| Unreadable/blurry region | Name what is unreadable, request a better crop - never guess |
+| Fresh repo, no design system | Default Tailwind scale, flag it in the spec, ask brand colours only |
+| Fragment (single component) | Same pipeline scoped to the component; ask container context once |
+| New API endpoint needed | Record as a note for the Backend agent - do not create it |

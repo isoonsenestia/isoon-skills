@@ -5,7 +5,8 @@ Instantiate to `<repo>/docs/ui-specs/<YYYY-MM-DD>-<slug>.md`. Copy the source im
 ```markdown
 ---
 date: YYYY-MM-DD
-source-image: ./assets/<slug>.png
+source-images:
+  - ./assets/<slug>.png
 repo: <repo-name>
 screens: <N>
 ---

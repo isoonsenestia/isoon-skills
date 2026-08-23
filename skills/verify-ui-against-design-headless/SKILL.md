@@ -20,13 +20,13 @@ description: Use when verifying a UI component matches a design or pixel spec in
 
 A screenshot proves *presence*; it does not prove *spacing*. When the build came from `ui-image-intake`, there is a `<slug>.design.md` with a single spacing scale (`edge`, `section`, `item`, `group`, `card-pad`, …) in px. Verify each numerically instead of by eye — this is what catches "parts don't align."
 
-- **Build a target list from `design.md`**: each row is `(label, selectorA, selectorB, expectedPx)`. Cover at least one gap per scale token, and always compare the SAME token across different components (e.g. `card-pad` on the toolbar vs the bottom cards) — cross-component drift is the common failure.
+- **Build a target list from `design.md` rows that carry a `method` cell**: each row is `(label, selectorA, selectorB, expectedPx)`. Where a row's `measured` value differs from its snapped token value, assert the **measured** value and report the delta - the measured column is the image, and the image is the oracle. A row with no `method` cell was never measured: report it `UNVERIFIED` rather than passing it silently. Re-measure a disputed row with `ui-image-intake/references/measure.py` instead of arguing about it.
 - **Measure in the page**: a client `useEffect` reads `getBoundingClientRect()` for each pair, computes the gap, and renders `label: actual / expected` as on-screen text (and `console.log`s it so the dev log carries it too).
 - **Assert with tolerance ±2px** (sub-pixel rounding, borders). Flag any row outside tolerance as FAIL with both numbers; do not report "matches" while any row fails.
-- **Consistency check**: assert equal-token gaps are equal to each other, not just to the target — e.g. `toolbar card-pad == bottom card-pad`. A build can hit each target individually yet still look inconsistent if one component used a different token.
+- **Consistency check, conditional on the measurement**: assert equality only between components `design.md` records as the same kind - same measured box extent and same measured padding. Where their `measured` cells differ, assert each against its own value and do not compare them. Forcing equality across components that genuinely differ is its own bug: a 44px elevated card with 4px padding and a 36px flat pill with zero padding are not one `card-pad`.
 - Divide measured values by `--force-device-scale-factor` if you read them off the 2x screenshot rather than from the in-page readout; the in-page `getBoundingClientRect()` is already in CSS px, so prefer it.
 
-**Anti-example:** Declaring a design-match task done because `next build` passed — that shipped the wrong inset twice before a screenshot caught it. Second anti-example: a screenshot that "looked right" while the toolbar used `p-1.5` and the bottom cards used `p-1` — only a cross-component `card-pad` assertion would have failed it.
+**Anti-example:** Declaring a design-match task done because `next build` passed — that shipped the wrong inset twice before a screenshot caught it. Second anti-example: forcing the toolbar and the bottom cards onto one `card-pad` token when measurement shows a 44px card with 4px padding and a 36px pill with none - the equality itself was the bug, and it also picked the wrong value for the one component that has padding.
 
 ## Related
 
