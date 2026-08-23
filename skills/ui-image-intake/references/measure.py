@@ -278,6 +278,13 @@ def hex_to_rgb(h):
     return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 
+def load_tokens(path):
+    """Accept either a flat {name: hex} map or the resolver's wrapped output."""
+    doc = json.load(open(path))
+    inner = doc.get("tokens") if isinstance(doc, dict) else None
+    return inner if isinstance(inner, dict) else doc
+
+
 def nearest_token(hexcol, tokens):
     """Nearest token by CIE76 in Lab. dE above 10 is reported, not silently snapped."""
     if not tokens:
@@ -657,7 +664,7 @@ def main():
         box, sides = refine_box(lum, reg)
         print(json.dumps({"box": box, "sides": sides}, indent=2))
     elif args.cmd == "color":
-        tokens = json.load(open(args.tokens)) if args.tokens else {}
+        tokens = load_tokens(args.tokens) if args.tokens else {}
         out = exact_extents(rgb, reg)[:args.top]
         for o in out:
             nt = nearest_token(o["hex"], tokens)
