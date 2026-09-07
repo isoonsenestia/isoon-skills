@@ -82,12 +82,12 @@ Or run them separately:
 
 ## Scripts
 
-- `scripts/install.sh` — idempotent. Creates one symlink per skill in `~/.claude/skills/`. Backs up any pre-existing non-symlink content to `<name>.bak.<timestamp>` before linking. Pass `--all` (or `--cowork`, or `COWORK=1`) to also run `sync-cowork.sh`.
+- `scripts/install.sh` — idempotent. Creates one symlink per skill in `~/.claude/skills/`. Backs up any pre-existing non-symlink content to `<name>.bak.<timestamp>` before linking. Then **reaps** its own stale links, on the same rules as `sync-cowork.sh` below. Pass `--all` (or `--cowork`, or `COWORK=1`) to also run `sync-cowork.sh`.
 - `scripts/sync-cowork.sh` — mac-only. Detects the newest Claude Desktop Cowork session and symlinks each repo skill into its `skills/` folder. Then **reaps** its own stale links: a symlink pointing into this repo whose skill no longer exists is removed, so deleting or renaming a skill doesn't leave a dangling link behind. Never touches Cowork built-ins, uploaded skills, or symlinks pointing outside the repo — including broken ones. Skips the reap entirely if the source tree turns up empty. Pass `REAP=0` to disable. No-ops gracefully when Cowork isn't installed.
 - `scripts/uninstall.sh` — removes only symlinks pointing into this repo, from both the CLI destination and the newest Cowork session. Leaves backups and foreign symlinks alone.
 - `scripts/doctor.sh` — reports broken symlinks and any directory under `~/.claude/skills/` that isn't a symlink (potential unsaved work). Also scans the newest Cowork session for broken repo-pointing symlinks.
 
-`install.sh`, `sync-cowork.sh`, `uninstall.sh`, and `doctor.sh` all accept `SKILLS_SRC` and `SKILLS_DEST` env vars for testing.
+`install.sh`, `sync-cowork.sh`, `uninstall.sh`, and `doctor.sh` all accept `SKILLS_SRC`, `SKILLS_DEST`, and `REPO_ROOT` env vars for testing. `install.sh` and `sync-cowork.sh` also accept `REAP=0` to skip the reap pass.
 
 ## Authoring a new skill
 
