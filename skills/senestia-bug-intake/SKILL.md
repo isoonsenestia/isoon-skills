@@ -132,4 +132,4 @@ If the feedback reveals a new persistent style rule, append it to `preference.md
 ## Related
 
 - **REQUIRED BACKGROUND:** `preference.md` (this skill's directory) — Thai copy style rules.
-- **RELATED:** the bundled `/code-review` skill (takes a PR number) — for the engineering ticket's eventual PR review.
+- **RELATED:** `pr-review` — for the engineering ticket's eventual PR review.

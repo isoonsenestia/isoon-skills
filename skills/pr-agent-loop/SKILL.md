@@ -18,7 +18,7 @@ Codium PR-agent (the `github-actions[bot]`) posts a persistent **PR Reviewer Gui
 
 **When NOT to use:**
 - The repo doesn't have `pr_agent.yaml` — the bot won't run, this skill does nothing.
-- You're reviewing the diff yourself — use the bundled `/code-review` skill directly.
+- You're reviewing the diff yourself — use the `pr-review` skill directly.
 - You need a one-off Q&A — use `/ask <question>` as a PR comment manually; this skill is for the persistent review/improve cycle.
 
 ## The Pattern
@@ -110,4 +110,5 @@ Present a table:
 
 ## Related
 
+- **RELATED:** `pr-review` — when you review the diff yourself instead of validating the bot's.
 - **RELATED:** `logic-first-review` — the structured format applies to bot suggestions too.
