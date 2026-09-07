@@ -7,6 +7,7 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 - **analyzing-phone-data-quality** — Audit raw phone-number CSVs: detect separators, validate against a national standard, output a cleansing plan.
 - **building-concept-explainer-html** — Build a single-file interactive HTML page that teaches a concept; eight beats, seven UI primitives, single-file vanilla-JS baseline.
 - **checking-ready-to-develop** — Gate a backlog item against Senestia's Definition of Ready (6 required + 2 optional criteria, owners, deprecated security review) before it enters a sprint.
+- **component-from-figma** — Build one his-design-system component from a Jira ticket plus labelled Figma nodes; worktree + subagent flow over the repo's figma-conformance skill.
 - **continuous-learning** — Extract a non-trivial solution (debugging technique, workaround, project quirk, resteer pattern) into a reusable skill at session end so future sessions don't repeat the work.
 - **design-doc-self-review** — Before handing a design/spec/TDD doc to a reviewer, self-check six defect classes (overclaim, internal contradiction, stale framing, rationale gap, name-hides-intent, claim-scope); surface requirement questions instead of auto-fixing them.
 - **design-feedback-as-oracle** — When a literal design fix is rejected, render side-by-side candidate variants and let the user pick; decouple cheap visual iteration from the expensive commit/rebase step.
@@ -15,7 +16,9 @@ Registry of skills under `~/.claude/skills/`. Keep entries to one line. Update w
 - **logic-first-review** — Sub-skill enforcing the *Current logic → Why it breaks → What should happen → Suggested change* review format.
 - **memory-review** — Walk the auto-memory directory file-by-file with the user; keep / update / delete each entry and reconcile MEMORY.md.
 - **pr-agent-loop** — Trigger, wait for, fetch, and validate the Codium PR-agent (github-actions[bot]) auto-review on a PR.
+- **pr-review** — Review a GitHub PR by number: fetch the diff with `gh`, trace the blast radius, publish a logic-first review with a validated severity table.
 - **repo-wiki** — Generate and maintain a graph-linked living wiki for a repo across the microservice ecosystem.
+- **resplitting-commits** — Rebuild a tangled or junk-named branch as atomic commits: anchor the base, build forward one concern at a time, gate every commit.
 - **restack-after-amend** — After amending a base commit in a stacked-branch chain, rebase dependents with `git rebase --onto <new-base> <old-boundary>` to drop the superseded commit (plain rebase for additive changes).
 - **self-review-before-complete** — Apply logic-first review to your own diff before claiming a task is done.
 - **senestia-bug-intake** — Triage a customer-reported bug in Senestia's Atlassian: file the engineering counterpart on the PECS board with sprint/label/link, post a Thai short summary back on the source.

@@ -6,11 +6,10 @@ Personal Claude Code skills.
 
 | Skill | Use when |
 |---|---|
-| `save-skill` | Capturing a new technique as a SKILL.md |
 | `continuous-learning` | Extracting a solved non-trivial problem into a reusable skill at session end |
 | `fe-next` | Working in a Senestia Next.js codebase |
 | `repo-wiki` | Documenting or navigating a repo / microservice ecosystem |
-| `review` | Reviewing a pull request |
+| `pr-review` | Reviewing a GitHub pull request by number |
 | `design-doc-self-review` | Self-checking a design/spec/estimation doc before handing it to a reviewer |
 | `technical-design-doc` | Drafting a technical design doc - FULL (~3-4 pages) or LITE one-page RFC |
 | `dispatch` | Turning a one-line goal into a dev-squad plan.md and running the tmux dispatch pipeline |
@@ -20,12 +19,13 @@ Personal Claude Code skills.
 | `checking-ready-to-develop` | Gating a backlog item against the Definition of Ready before a sprint |
 | `senestia-bug-intake` | Triaging a customer bug into an engineering ticket on the PECS board |
 | `pr-agent-loop` | Driving the Codium PR-agent auto-review on a PR |
-| `grill-me` | Stress-testing a plan/design one question at a time, capturing decisions |
 | `building-concept-explainer-html` | Building a single-file interactive HTML page that teaches a concept |
 | `analyzing-phone-data-quality` | Auditing raw phone-number CSVs (Thai context) |
 | `memory-review` | Walking the auto-memory directory entry-by-entry to keep / update / delete |
 | `tidy-memory` | Auditing and pruning journal, transcripts, and skill drafts |
 | `restack-after-amend` | Re-stacking dependent branches after amending a base commit in a stacked-PR chain (`rebase --onto`) |
+| `resplitting-commits` | Rebuilding a tangled or junk-named branch as one atomic commit per concern |
+| `component-from-figma` | Building one his-design-system component from a Jira ticket plus labelled Figma nodes |
 | `ui-image-intake` | Building/matching UI from a pasted image — snap to the design system, interview semantics, emit a semantic spec + a `design.md` visual reference |
 | `verify-ui-against-design-headless` | Pixel-verifying a UI component against a design via headless Chrome (no DOM test runner) |
 | `design-feedback-as-oracle` | A literal design fix was rejected — disambiguate with side-by-side candidates, not another guess |
@@ -38,7 +38,7 @@ See `skills/_meta/INDEX.md` for the canonical registry and `skills/_meta/BEST_PR
 /plugin install https://github.com/isoonsenestia/isoon-skills
 ```
 
-Claude Code clones the repo into its plugin cache and auto-loads everything in `skills/`. Skill names will appear namespaced as `isoon-skills:save-skill`, etc.
+Claude Code clones the repo into its plugin cache and auto-loads everything in `skills/`. Skill names will appear namespaced as `isoon-skills:pr-review`, etc.
 
 ## Install — as a symlinked dev checkout (for the author / contributors)
 
@@ -91,7 +91,7 @@ Or run them separately:
 
 ## Authoring a new skill
 
-Run `save-skill` inside Claude Code (say "save this as a skill" or "make this a skill"). It reads `skills/_meta/BEST_PRACTICES.md`, drafts from `skills/_meta/TEMPLATE.md`, writes the new skill, and updates `skills/_meta/INDEX.md`.
+Use whichever skill-authoring skill is installed (`superpowers:writing-skills`) to draft it, or `continuous-learning` to extract one from a solved problem. Either way the repo's own rules apply: read `skills/_meta/BEST_PRACTICES.md`, start from `skills/_meta/TEMPLATE.md`, and add a one-line entry to `skills/_meta/INDEX.md` plus a row in the table above.
 
 ## License
 
