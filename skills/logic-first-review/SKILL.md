@@ -1,6 +1,6 @@
 ---
 name: logic-first-review
-description: Use as a sub-skill when another skill (pr-review, self-review-before-complete, security-review) needs the structured review format — Current logic → Why it breaks → What should happen → Suggested change. Pattern reference, not a standalone trigger
+description: Use as a sub-skill when another skill (pr-review, security-review) needs the structured review format - Current logic, Why it breaks, What should happen, Suggested change. Pattern reference, not a standalone trigger
 ---
 
 # Logic-First Code Review
@@ -14,7 +14,7 @@ A suggestion without grounded logic is an assertion the reader can't verify. For
 ## When to Use
 
 - Reviewing a pull request (use with the `pr-review` skill or GitHub MCP for fetching the diff)
-- Reviewing a local diff before commit (use with `self-review-before-complete`)
+- Reviewing a local diff before commit, including your own
 - Reviewing a single file or function someone hands you
 - Any time you're producing structured feedback on code you didn't just write
 
@@ -52,6 +52,8 @@ A candidate that fails any check is **not** a Bug/Medium. Demote it to Low (if i
 - "Duplicated logic might drift" — it is consistent today → Low.
 - "Symbol / type is not visible in this diff" — you cannot trace a failure you cannot see → Low or drop; note it as "verify it resolves", not a defect.
 
+**Design findings are the one exception to the trace requirement.** A module-boundary finding that names a complexity cost (change amplification, cognitive load, unknown unknowns) has no input-to-failure path, so it substitutes cited evidence for check 1: the sites that must change together, or the call site that carries the detail. With that evidence it stays **Medium**; without it, Low or drop. Checks 2 and 3 still apply. See the `pr-review` Validation Pass for the per-cost evidence bar.
+
 **The gate filters false positives; it does not lower the bar for real bugs.** A failure you can trace end-to-end on realistic input stays a **Bug** even if the fix is one line. Detection stays wide — only publishing is gated.
 
 ## Output Structure
@@ -78,7 +80,7 @@ Severity levels:
 ## Focus Areas (in priority order)
 
 1. **Correctness** — logic bugs, edge cases, off-by-one, type/size mismatches, silent invalid output
-2. **Regressions & blast radius** — behavior removed or narrowed versus the code being replaced, and the downstream fallout of the change: callers of changed/renamed/removed functions, importers of changed symbols, behavioral-contract shifts (same signature, different return value / thrown error / side-effect), and readers or writers of a changed schema, data shape, config key, or shared state. On a bare pasted diff, at least name the dependents that need checking; with repo access, trace them (see the `pr-review` / `self-review-before-complete` blast-radius step)
+2. **Regressions & blast radius** — behavior removed or narrowed versus the code being replaced, and the downstream fallout of the change: callers of changed/renamed/removed functions, importers of changed symbols, behavioral-contract shifts (same signature, different return value / thrown error / side-effect), and readers or writers of a changed schema, data shape, config key, or shared state. On a bare pasted diff, at least name the dependents that need checking; with repo access, trace them (see the `pr-review` blast-radius step)
 3. **Duplication** — identical blocks that will drift; extract helpers
 4. **Architecture** — business logic leaking into wrong layer, shared utilities missing
 5. **Tests** — coverage of edge cases, not just happy path
