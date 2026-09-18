@@ -1,5 +1,6 @@
 ---
 name: restack-after-amend
+disable-model-invocation: true
 description: Use when you've amended, reworded, or rewritten a commit on a base branch in a stacked-branch / stacked-PR chain and need to rebase the dependent branches onto it without conflicts or duplicate commits.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: verify-ui-against-design-headless
-description: Use when verifying a UI component matches a design or pixel spec in a Next.js (or similar) repo that has no DOM test runner (no jsdom/RTL) — to actually see and measure the rendered result, not just confirm it compiles.
+description: Use as the verification step of `ui-image-intake`, when that skill hands off a built component and a `<slug>.design.md` to be checked against the image in a repo with no DOM test runner (no jsdom/RTL). Not a standalone trigger - invoke it from `ui-image-intake`, or when the user asks for it by name.
 ---
 
 # Verify a UI Component Against a Design with Headless Chrome

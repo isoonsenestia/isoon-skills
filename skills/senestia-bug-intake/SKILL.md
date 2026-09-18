@@ -1,5 +1,6 @@
 ---
 name: senestia-bug-intake
+disable-model-invocation: true
 description: Use when triaging a customer-reported bug in Senestia's Atlassian (ACS, DDST, customer-service projects) and an engineering counterpart needs to be filed. Triggers on phrases like "create engineering ticket from this bug", "intake this customer report", "track [ACS-X] in [PE/APS/…]", or while working a customer-service ticket and needing the dev follow-up.
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: resplitting-commits
+disable-model-invocation: true
 description: Use when a branch's commits are tangled or junk-named ("wip", "stuff", "fixes") and need to be rebuilt as clean atomic commits, or when asked to squash-and-re-split, flatten and recommit, or reorganize a branch's history into one commit per concern.
 ---
 

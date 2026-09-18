@@ -1,5 +1,6 @@
 ---
 name: checking-ready-to-develop
+disable-model-invocation: true
 description: Use when checking if a story, task, or backlog item meets the Definition of Ready (DoR) to enter a sprint — "is this card ready to develop?", DoR gate, sprint-planning readiness check.
 ---
 

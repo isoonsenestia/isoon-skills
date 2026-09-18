@@ -25,7 +25,7 @@ Then one open question: which states exist that the mock does not show? (loading
 
 - Data source: existing service (grep `services/` / `_repositories/` first and propose the match) / new endpoint (record as Backend-agent note, never create) / mock data.
 - Field bindings: propose from the API shape when a service exists; ask only unmapped fields.
-- Copy: is the mock text final? Propose th/en i18n keys per fe-next i18n rules; if the mock shows one language, ask for the other only when not derivable.
+- Copy: is the mock text final? Propose th/en i18n keys per the repo's i18n conventions; if the mock shows one language, ask for the other only when not derivable.
 
 ## Ambiguous snaps
 

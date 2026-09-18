@@ -1,5 +1,6 @@
 ---
 name: tidy-memory
+disable-model-invocation: true
 description: Use when the user says "tidy memory", "clean up memory", "prune journal", "the transcripts are bloated", "/tidy-memory", or when SessionStart context shows transcript/journal counts past the nudge threshold and the user wants to act on it
 ---
 

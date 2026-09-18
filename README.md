@@ -4,31 +4,21 @@ Personal Claude Code skills.
 
 ## What's in here
 
-| Skill | Use when |
-|---|---|
-| `continuous-learning` | Extracting a solved non-trivial problem into a reusable skill at session end |
-| `fe-next` | Working in a Senestia Next.js codebase |
-| `repo-wiki` | Documenting or navigating a repo / microservice ecosystem |
-| `pr-review` | Reviewing a GitHub pull request by number |
-| `design-doc-self-review` | Self-checking a design/spec/estimation doc before handing it to a reviewer |
-| `technical-design-doc` | Drafting a technical design doc - FULL (~3-4 pages) or LITE one-page RFC |
-| `dispatch` | Turning a one-line goal into a dev-squad plan.md and running the tmux dispatch pipeline |
-| `logic-first-review` | Sub-skill for the *Current logic → Why it breaks → What should happen → Suggested change* format |
-| `self-review-before-complete` | Before claiming a task done — reviews your own diff |
-| `writing-tests` | Authoring a unit/integration/e2e test (esp. dev-squad TDD tasks) |
-| `checking-ready-to-develop` | Gating a backlog item against the Definition of Ready before a sprint |
-| `senestia-bug-intake` | Triaging a customer bug into an engineering ticket on the PECS board |
-| `pr-agent-loop` | Driving the Codium PR-agent auto-review on a PR |
-| `building-concept-explainer-html` | Building a single-file interactive HTML page that teaches a concept |
-| `analyzing-phone-data-quality` | Auditing raw phone-number CSVs (Thai context) |
-| `memory-review` | Walking the auto-memory directory entry-by-entry to keep / update / delete |
-| `tidy-memory` | Auditing and pruning journal, transcripts, and skill drafts |
-| `restack-after-amend` | Re-stacking dependent branches after amending a base commit in a stacked-PR chain (`rebase --onto`) |
-| `resplitting-commits` | Rebuilding a tangled or junk-named branch as one atomic commit per concern |
-| `component-from-figma` | Building one his-design-system component from a Jira ticket plus labelled Figma nodes |
-| `ui-image-intake` | Building/matching UI from a pasted image — snap to the design system, interview semantics, emit a semantic spec + a `design.md` visual reference |
-| `verify-ui-against-design-headless` | Pixel-verifying a UI component against a design via headless Chrome (no DOM test runner) |
-| `design-feedback-as-oracle` | A literal design fix was rejected — disambiguate with side-by-side candidates, not another guess |
+| Skill | Use when | Invocation |
+|---|---|---|
+| `pr-review` | Reviewing a GitHub pull request by number | model or user |
+| `logic-first-review` | Sub-skill for the *Current logic, Why it breaks, What should happen, Suggested change* format | model or user |
+| `memory-review` | Walking the auto-memory directory entry-by-entry to keep / update / delete | model or user |
+| `verify-ui-against-design-headless` | Pixel-verifying a UI component against a design via headless Chrome (no DOM test runner); the verification step of `ui-image-intake` | model or user |
+| `checking-ready-to-develop` | Gating a backlog item against the Definition of Ready before a sprint | user only |
+| `senestia-bug-intake` | Triaging a customer bug into an engineering ticket on the PECS board | user only |
+| `tidy-memory` | Auditing and pruning journal, transcripts, and skill drafts | user only |
+| `restack-after-amend` | Re-stacking dependent branches after amending a base commit in a stacked-PR chain (`rebase --onto`) | user only |
+| `resplitting-commits` | Rebuilding a tangled or junk-named branch as one atomic commit per concern | user only |
+| `component-from-figma` | Building one his-design-system component from a Jira ticket plus labelled Figma nodes | user only |
+| `ui-image-intake` | Building/matching UI from a pasted image - snap to the design system, interview semantics, emit a semantic spec + a `design.md` visual reference | user only |
+
+"User only" skills carry `disable-model-invocation: true`: the agent never reaches for them, and no other skill can call them. Type the slash command.
 
 See `skills/_meta/INDEX.md` for the canonical registry and `skills/_meta/BEST_PRACTICES.md` for the authoring rules.
 
@@ -91,7 +81,7 @@ Or run them separately:
 
 ## Authoring a new skill
 
-Use whichever skill-authoring skill is installed (`superpowers:writing-skills`) to draft it, or `continuous-learning` to extract one from a solved problem. Either way the repo's own rules apply: read `skills/_meta/BEST_PRACTICES.md`, start from `skills/_meta/TEMPLATE.md`, and add a one-line entry to `skills/_meta/INDEX.md` plus a row in the table above.
+Use whichever skill-authoring skill is installed (`superpowers:writing-skills`) to draft it. Either way the repo's own rules apply: read `skills/_meta/BEST_PRACTICES.md`, start from `skills/_meta/TEMPLATE.md`, and add a one-line entry to `skills/_meta/INDEX.md` plus a row in the table above.
 
 ## License
 
