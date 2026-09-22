@@ -13,6 +13,7 @@ Model-invoked (the agent may reach for these on its own):
 
 User-invoked only (`disable-model-invocation: true`; type the slash command):
 
+- **ask-pm** - Router for "what should I work on next": pick one application/project, one first move, and the lightest process that fits.
 - **checking-ready-to-develop** - Gate a backlog item against Senestia's Definition of Ready (6 required + 2 optional criteria, owners, deprecated security review) before it enters a sprint.
 - **component-from-figma** - Build one his-design-system component from a Jira ticket plus labelled Figma nodes; worktree + subagent flow over the repo's figma-conformance skill.
 - **resplitting-commits** - Rebuild a tangled or junk-named branch as atomic commits: anchor the base, build forward one concern at a time, gate every commit.

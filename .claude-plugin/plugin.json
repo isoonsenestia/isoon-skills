@@ -1,7 +1,7 @@
 {
   "name": "isoon-skills",
   "version": "0.3.0",
-  "description": "Personal Claude Code skills by isoon: code review (pr-review, logic-first-review), Senestia engineering workflows (checking-ready-to-develop, senestia-bug-intake), git workflows (restack-after-amend, resplitting-commits), UI iteration (ui-image-intake, verify-ui-against-design-headless, component-from-figma), and memory hygiene (memory-review, tidy-memory).",
+  "description": "Personal Claude Code skills by isoon: work routing (ask-pm), code review (pr-review, logic-first-review), Senestia engineering workflows (checking-ready-to-develop, senestia-bug-intake), git workflows (restack-after-amend, resplitting-commits), UI iteration (ui-image-intake, verify-ui-against-design-headless, component-from-figma), and memory hygiene (memory-review, tidy-memory).",
   "author": {
     "name": "isoon",
     "email": "isoon@senestia.com"

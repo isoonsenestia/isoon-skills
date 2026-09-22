@@ -10,6 +10,7 @@ Personal Claude Code skills.
 | `logic-first-review` | Sub-skill for the *Current logic, Why it breaks, What should happen, Suggested change* format | model or user |
 | `memory-review` | Walking the auto-memory directory entry-by-entry to keep / update / delete | model or user |
 | `verify-ui-against-design-headless` | Pixel-verifying a UI component against a design via headless Chrome (no DOM test runner); the verification step of `ui-image-intake` | model or user |
+| `ask-pm` | Unsure what to work on next, which application to work in, or which process to follow | user only |
 | `checking-ready-to-develop` | Gating a backlog item against the Definition of Ready before a sprint | user only |
 | `senestia-bug-intake` | Triaging a customer bug into an engineering ticket on the PECS board | user only |
 | `tidy-memory` | Auditing and pruning journal, transcripts, and skill drafts | user only |
