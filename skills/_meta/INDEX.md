@@ -8,6 +8,7 @@ Model-invoked (the agent may reach for these on its own):
 
 - **logic-first-review** - Sub-skill enforcing the *Current logic, Why it breaks, What should happen, Suggested change* review format.
 - **memory-review** - Walk the auto-memory directory file-by-file with the user; keep / update / delete each entry and reconcile MEMORY.md.
+- **npm-audit-remediation** - Handle `npm audit` findings per root cause by reachability: smallest fix (audit fix, scoped override, dev bump), repro, real-image boot, one commit per concern.
 - **pr-review** - Review a GitHub PR by number: fetch the diff with `gh`, trace the blast radius and module boundaries, publish a logic-first review with a validated severity table.
 - **verify-ui-against-design-headless** - Pixel-verify a UI component with no DOM test runner: throwaway preview route + headless-Chrome screenshot + `getBoundingClientRect()` readout. Reached as the verification step of `ui-image-intake`, not on its own.
 
